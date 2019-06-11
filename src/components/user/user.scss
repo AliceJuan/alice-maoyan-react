@@ -1,0 +1,104 @@
+@import '../../style/mixin.scss';
+.user{
+    position: fixed;
+    top: $--tab-height;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    .header {
+        @include wh(100%, vw(140));
+        background: $red;
+        display: flex;
+        align-items: center;
+        .user-icon {
+            @include wh(vw(100), vw(100));
+            border: vw(5) solid $border;
+            background-color: #FFAA00;
+            margin: 0 vw(30);
+            border-radius: 50%;
+        }
+        >span {
+            font-size: vw(30);
+            color: #ffffff;
+        }
+    }
+    &-info {
+        width: 100%;
+        .user-order{
+            @include wh(100%, vw(100));
+            display: block;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 vw(30);
+            line-height: vw(100);
+            background-color: #fff;
+            &:active {
+                background-color: rgb(224, 227, 230);
+            }
+            &-right span{
+                display: inline-block;
+                font-size: vw(28);
+                color: #9f9c9c;
+                position: relative;
+            }
+        }
+        .user-operation{
+            display: flex;
+            width: 100%;
+            padding: vw(10) 0;
+            background-color: #fff;
+            border-bottom: vw(1) solid #dcd8d8;
+            .link-li{
+                display: block;
+                width: 33.33%;
+                color: #999;
+                padding-top: vw(10);
+                &:active {
+                    background-color: rgb(224, 227, 230);
+                }
+                >span {
+                    display: block;
+                    @include wh(vw(40), vw(40));
+                    margin: 0 auto;
+                }
+                p {
+                    padding: vw(20) 0;
+                    text-align: center;
+                    font-size: vw(26);
+                }
+                .wait-pay-icon{
+                    background: url(../../assets/waitPay.png) no-repeat;
+                    background-size: contain;
+                }
+                .wait-comment-icon{
+                    background: url(../../assets/waitComment.png) no-repeat;
+                    background-size: contain;
+                }
+                .refund-icon{
+                    background: url(../../assets/refund.png) no-repeat;
+                    background-size: contain;
+                }
+            }
+        }
+        .user-activity{
+            background: #FFF;
+            margin-top: vw(10);
+            .link-li{
+                display: flex;
+                justify-content: space-between;
+                padding: vw(30);
+                border-bottom: vw(1) solid #e5e3e3;
+                &:active {
+                    background-color: rgb(224, 227, 230);
+                }
+            }
+        }
+    }
+}
+.icon-go {
+    @include wh(vw(40), vw(40));
+    background: url(../../assets/arrow-right.png) no-repeat;
+    background-size: contain;
+    display: inline-block;
+    vertical-align: middle;
+}

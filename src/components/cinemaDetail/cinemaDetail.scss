@@ -1,0 +1,180 @@
+@import '../../style/mixin.scss';
+.cinema-detail-title{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: vw(30) 0;
+    > div{
+        flex: 3;
+        @include utils-ellipsis;
+        padding: 0 vw(30);
+        border-right: vw(1) solid #838282;
+        h3{
+            font-weight: 700;
+        }
+        span{
+            line-height: vw(70);
+            font-size: vw(30);
+            color: #585757;
+        }
+    }
+    > span{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        i{
+            background: url('../../assets/location.png') no-repeat;
+            background-size: contain;
+            @include wh(vw(60), vw(60));
+        }
+    }
+}
+.cinema-nav{
+    .cinema-nav-list {
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        .swiper-container {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            padding: vw(50) 0;
+        }
+        .swiper-slide {
+            &.swiper-slide-active div{
+                @include wh(vw(140), vw(200));
+                border: vw(4) solid #FFF;
+                box-sizing: content-box;
+                transform: scale(1.2);
+                &::after {
+                    width: 0;
+                    height: 0;
+                    content: "";
+                    position: absolute;
+                    left: 50%;
+                    -webkit-transform: translateX(-50%);
+                    transform: translateX(-50%);
+                    bottom: vw(-25);
+                    z-index: 100;
+                    border: vw(10) solid transparent;
+                    border-top: vw(10) solid #fff;
+                }
+            }
+        }
+        img {
+            @include wh(vw(140), vw(200));
+            cursor: pointer;
+        }
+    }
+    .post-bg, .post-bg-filter {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    .post-bg {
+        z-index: -1;
+        overflow: hidden;
+        -webkit-filter: blur(30px);
+        filter: blur(30px);
+        background-position-y: 40%;
+    }
+    .post-bg-filter {
+        background-color: #40454d;
+        opacity: .55;
+        .bg-img{
+            width:100%;
+            height:100%;
+            filter: blur(30px);
+        }
+    }
+    .movie-introduction{
+        text-align: center;
+        padding: vw(20) 0;
+        h3{
+            font-weight: 700;
+        }
+        p{
+            line-height: vw(50);
+            @include small-font;
+        }
+    }
+}
+.movie-time{
+    .day-list{
+        border-top: vw(1) solid #d6d5d5;
+        border-bottom: vw(1) solid #d6d5d5;
+        display: flex;
+        justify-content: flex-start;
+        li{
+            line-height: vw(80);
+            width: 30%;
+            text-align: center;
+            font-size: vw(28);
+            &.active {
+                border-bottom: 2px solid $red;
+                color: $red;
+            }
+        }
+    }
+    .date-list ul li{
+        display: flex;
+        justify-content:flex-start;
+        padding: vw(25) vw(8);
+        .time-details{
+            flex: 4;
+            > div{
+                display: flex;
+                align-items: flex-start;
+                &:first-child{
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: baseline;
+                }
+                span{
+                    height: vw(45);
+                    text-align: left;
+                    @include small-font;
+                    padding-left: vw(20);
+                }
+                .start-time{
+                    font-size: vw(38);
+                    color: #333;
+                }
+                .price i{
+                    color: $red;
+                }
+                .price-str{
+                    font-size: vw(38);
+                }
+                .start-time, .end-time{
+                    width: 25%;
+                }
+                .video-type, .video-hall{
+                    width: 45%;
+                }
+                .price, .discount-price{
+                    width: 35%;
+                }
+            }
+        }
+        .buy-btn{
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            button{
+                @include wh(vw(90), vw(50));
+                background: $red;
+                color: #ffffff;
+                border-radius: 6%;
+                line-height: vw(50);
+                font-size: vw(25);
+            }
+        }
+    }
+}

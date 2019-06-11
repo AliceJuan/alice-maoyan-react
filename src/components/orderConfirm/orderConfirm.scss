@@ -1,0 +1,75 @@
+@import '../../style/mixin.scss';
+.order{
+    &-info{
+        .movie-info{
+            padding: vw(40);
+            background: #769eb0;
+            span, p{
+                color: #FFF;
+            }
+            .movie-name{
+                font-size: vw(38);
+                line-height: vw(90);
+                margin-right: vw(10);
+            }
+            p{
+                line-height: vw(45);
+            }
+        }
+        .cinema-activity{
+            padding: 0 vw(30);
+            li{
+                display: flex;
+                justify-content: space-between;
+                line-height: vw(100);
+                .total-price{
+                    color: $red;
+                }
+                i{
+                    background: url(../../assets/arrow-right.png) no-repeat;
+                    background-size: contain;
+                    @include wh(vw(35), vw(35));
+                    display: inline-block;
+                    vertical-align: middle;
+                    position: relative;
+                    top: vw(-2);
+                }
+            }
+            li:not(:last-child){
+                border-bottom: vw(1) solid $border;
+            }
+        }
+    }
+    &-footer{
+        position: fixed;
+        bottom: 0;
+        z-index: 111;
+        width: 100%;
+        div{
+            @include wh(100%, vw(100));
+        }
+        .price-info{
+            background: #F5F5F5;
+            border-top: vw(1) solid $border;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            line-height: vw(100);
+            .price{
+                i{
+                    color: $red;
+                }
+                .big{
+                    font-size: vw(38);
+                }
+            }
+        }
+        .immediatePay{
+            background: #fe9b01;
+            font-size: vw(38);
+            text-align: center;
+            color: #FFF;
+            line-height: vw(100);
+        }
+    }
+}

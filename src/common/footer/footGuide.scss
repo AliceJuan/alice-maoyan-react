@@ -1,0 +1,48 @@
+@import '../../style/mixin.scss';
+#foot-guide {
+    background: #ffffff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    @include wh(100%, vw(110));
+    display: flex;
+    z-index: 100;
+    border-top: 1px solid #ccc;
+}
+.guide-item{
+    flex: 1;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    span:first-child{
+        @include wh(vw(50),vw(50));
+        background-size: contain;
+        margin: vw(10) 0 vw(5) 0;
+    }
+    span:last-child{
+        font-size: vw(28);
+    }
+    .msite-icon{
+        background: url(../../assets/film0.png) no-repeat;
+    }
+    .cinema-icon{
+        background: url(../../assets/cinema0.png) no-repeat;
+    }
+    .user-icon{
+        background: url(../../assets/mine0.png) no-repeat;
+    }
+    .selected-msite-icon{
+        background: url(../../assets/film1.png) no-repeat;
+    }
+    .selected-cinema-icon{
+        background: url(../../assets/cinema1.png) no-repeat;
+    }
+    .selected-user-icon{
+        background: url(../../assets/mine1.png) no-repeat;
+    }
+    .selected-title{
+        color: $red;
+    }
+}

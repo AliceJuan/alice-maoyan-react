@@ -1,0 +1,50 @@
+@import '../../style/mixin';
+.video-snack{
+    margin: 0 vw(30);
+    h3{
+        line-height: vw(80);
+        font-size: vw(32);
+    }
+    ul li{
+        cursor: pointer;
+        position: relative;
+        width: 100%;
+        padding: vw(20) 0;
+        overflow: hidden;
+        .snack-img{
+            display: inline-block;
+            float: left;
+            margin-right: vw(20);
+            img{
+                @include wh(vw(170), vw(170));
+            }
+        }
+        .snack-info{
+            position: relative;
+            margin-left: vw(190);
+            height: vw(170);
+            overflow: hidden;
+            .snack-title{
+                @include wh(75%, vw(120));
+            }
+            .snack-price{
+                @include wh(75%, vw(50));
+                line-height: vw(50);
+                font-size: vw(35);
+                color: $red;
+            }
+            .buy-snack{
+                @include wh(vw(90), vw(50));
+                background: $red;
+                color: #ffffff;
+                border-radius: 6%;
+                line-height: vw(50);
+                font-size: vw(25);
+                text-align: center;
+                position: relative;
+                float: right;
+                top: vw(-110);
+            }
+        }
+    }
+}

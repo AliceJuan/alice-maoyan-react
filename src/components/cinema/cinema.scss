@@ -1,0 +1,16 @@
+@import '../../style/mixin.scss';
+.show-days{
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    li{
+        flex: none;
+        line-height: vw(90);
+        width: vw(220);
+        text-align: center;
+        &.active {
+            border-bottom: 2px solid $red;
+            color: $red;
+        }
+    }
+}

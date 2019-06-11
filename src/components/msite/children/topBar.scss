@@ -1,0 +1,53 @@
+@import '../../../style/mixin';
+.film-top-bar{
+  @include wh(100%, vw(90));
+  position: fixed;
+  line-height: vw(90);
+  color: #666;
+  font-size: vw(29);
+  border-bottom: 1px solid #e6e6e6;
+  display: flex;
+  z-index: 1;
+  background: #F5F5F5;
+  .city-entry{
+    flex: 1;
+    padding-left: vw(30);
+    &-arrow{
+      width: 0;
+      height: 0;
+      border: vw(9) solid #b0b0b0;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      display: inline-block;
+      margin-top: 1vw;
+      margin-left: 1vw;
+      vertical-align: middle;
+    }
+  }
+  .switch-hot{
+    flex: 2;
+    display: flex;
+    .hot-item{
+      flex: 1;
+      text-align: center;
+    }
+    .active{
+      color: #e54847;
+      border-bottom: 3px solid #e54847;
+    }
+  }
+  .search-entry{
+    flex: 1;
+    text-align: right;
+    .search-icon{
+      background-image: url(../../../assets/search.png);
+      background-size: contain;
+      @include wh(vw(40), vw(40));
+      @include centerVertical;
+      background-repeat: no-repeat;
+      display: block;
+      right: vw(30);
+    }
+  }
+}

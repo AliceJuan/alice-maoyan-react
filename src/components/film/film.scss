@@ -1,0 +1,124 @@
+@import '../../style/mixin.scss';
+.movie-details{
+    position: absolute;
+    top: $--tab-height;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    .movie-headers{
+        @include wh(100%, vw(370));
+        position: relative;
+        overflow: hidden;
+        padding: vw(30);
+        background: #ccc;
+        div{
+            float: left;
+            display: block;
+        }
+        img{
+            @include wh(vw(220), vw(300));
+        }
+        .movie-content{
+            width: calc(100% - 30vw);
+            padding-left: vw(30);
+            color: #fff;
+            .movie-name{
+                width: 100%;
+                font-size: vw(40);
+                @include utils-ellipsis;
+            }
+            .movie-ename{
+                width: 100%;
+                font-size: vw(25);
+                line-height: vw(50);
+                @include utils-ellipsis;
+            }
+            .movie-category, .movie-date{
+                width: 100%;
+                font-size: vw(30);
+                line-height: vw(50);
+            }
+        }
+    }
+    .movie-desc{
+        padding: vw(30) vw(30) 0 vw(30);
+        font-size: vw(28);
+        span{
+            height: vw(120);
+            display: block;
+            overflow: hidden;
+        }
+        .expand-desc{
+            height: vw(200);
+        }
+        div{
+            @include wh(vw(50), vw(50));
+            background: url('../../assets/arrow-down.png') no-repeat;
+            background-size: contain;
+            margin: vw(5) auto;
+            transition: all .8s ease;
+        }
+        .desc-arrow{
+            transform: rotate(180deg);
+        }
+    }
+    .divide-line{
+        background-color: rgb(226,226,226) !important;
+        height: vw(10) !important;
+    }
+    .buy-btn{
+        margin: vw(10) vw(20);
+        @include wh(95%, vw(80));
+        position: fixed;
+        bottom: 0;
+        line-height: vw(80);
+        text-align: center;
+        background: $red;
+        color: #ffffff;
+        border-radius: vw(10);
+        font-size: vw(35);
+    }
+    .movie-comments{
+        margin: 0 vw(30) vw(90) vw(30);
+        h3{
+            line-height: vw(80);
+            font-size: vw(32);
+        }
+        ul li{
+            position: relative;
+            width: 100%;
+            padding: vw(20) 0;
+            overflow: hidden;
+            border-bottom: vw(1) solid #d6d5d5;
+            img{
+                @include wh(vw(70), vw(70));
+                border-radius: 50%;
+                float: left;
+            }
+            .comment-info{
+                margin-left: vw(90);
+                p{
+                    font-size: vw(26);
+                }
+                .score, .time, .up-count{
+                    font-size: vw(24);
+                    color: #969494;
+                }
+                .content{
+                    padding: vw(15) 0;
+                    font-size: vw(26);
+                }
+                .time{
+                    float: left;
+                }
+                .up-count{
+                    float: right;
+                    &::before{
+                        content: url('../../assets/dianzan.png');
+                        margin-right: vw(10);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+@import '../../style/mixin.scss';
+.star-score{
+    margin-bottom: vw(10);
+    .star-rating{
+        height: vw(38);
+        line-height: vw(40);
+        font-weight: bold;
+        font-size: vw(30);
+        color:#ffc600;
+        img{
+            vertical-align:middle;
+            @include wh(vw(38),vw(38));
+        }
+        span{
+            vertical-align: middle;
+        }
+    }
+    .star-num{
+        font-size: vw(25);
+        line-height: vw(50);
+    }
+}
