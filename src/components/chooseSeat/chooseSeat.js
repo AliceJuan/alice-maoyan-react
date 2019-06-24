@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from "react-dom"
 import './chooseSeat.scss'
+import { fromJS, is } from 'immutable'
 // import { Link } from 'react-router-dom'
 
 import HeadTop from '../../common/header/headTop'
@@ -22,7 +23,10 @@ class ChooseSeat extends Component {
 	}
 	componentDidMount(){
 		this.initSeatArray(10, 20)
-	}
+    }
+    shouldComponentUpdate(nextProps, nextState){
+        return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
+    }
 	// 初始座位数组
     initSeatArray () {
         let seatArrayTmp = Array(this.state.seatRow).fill(0).map(() => Array(this.state.seatCol).fill(0))
@@ -61,7 +65,7 @@ class ChooseSeat extends Component {
     handleChooseSeat = (row, col) => {
         let seatValue = this.state.seatArray[row][col]
         let newArray = this.state.seatArray
-        let selectSeatInfoTmp = []
+        let selectSeatInfoTmp = fromJS(this.state.selectSeatInfo).toJS()
         // 如果是已购座位，直接返回
         if (seatValue === 2) return
         // 如果是已选座位点击后变未选
@@ -70,29 +74,29 @@ class ChooseSeat extends Component {
             newArray[row][col] = 0
             selectSeatInfoTmp = this.state.selectSeatInfo.filter((item) => { return item.place !== place })
         } else if (seatValue === 0) {
-            if (this.state.selectSeatInfo.length >= this.state.smartChooseMaxNum) {
+            if (this.state.selectSeatInfo.length >= this.state.recommendChooseMaxNum) {
                 alert('一次最多选择4个座位')
             } else {
                 newArray[row][col] = 1
                 selectSeatInfoTmp.push({place: place, price: '19.9'})
             }
         }
-        // 必须整体更新二维数组，Vue无法检测到数组某一项更新,必须slice复制一个数组才行
-        this.setState({
+        // 必须整体更新二维数组，Vue无法检测到数组某一项更新,必须复制一个数组才行
+        this.setState((prevState)=>({
         	selectSeatInfo: selectSeatInfoTmp,
-        	seatArray: newArray.slice()
-        })
+            seatArray: fromJS(newArray).toJS()
+        }))
     }
     delSelectSeat = (place) => {
     	let selectSeatInfoTmp = []
         selectSeatInfoTmp = this.state.selectSeatInfo.filter(item => item.place !== place)
         let row = place.substring(0, place.indexOf('排'))
         let col = place.substring(place.indexOf('排') + 1, place.indexOf('坐'))
-        let oldArray = this.state.seatArray.slice()
+        let oldArray = fromJS(this.state.seatArray).toJS()
         oldArray[row][col] = 0
         this.setState({
         	selectSeatInfo: selectSeatInfoTmp,
-        	seatArray:oldArray
+        	seatArray: oldArray
         })
     }
     confirmChooseSeat = () => {
@@ -215,7 +219,7 @@ class ChooseSeat extends Component {
         this.setState({
         	selectSeatInfo: []
         })
-        let oldArray = this.state.seatArray.slice()
+        let oldArray = fromJS(this.state.seatArray).toJS()
         for (let i = 0; i < result.length; i++) {
             // 选定座位
             oldArray[result[i][0]][result[i][1]] = 1

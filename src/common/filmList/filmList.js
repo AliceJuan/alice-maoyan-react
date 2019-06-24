@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
+import LazyLoad from 'react-lazyload'
 import './filmList.scss'
 
 class FilmList extends Component {
@@ -14,7 +15,9 @@ class FilmList extends Component {
 		return (
 			<Link className="film-card" to={{pathname: '/film/'+film.movieId}}>
 			    <div className="film-img">
-			      	<img src={film.imgSrc} alt=''/>
+			    	<LazyLoad throttle={200} height={125}>
+			      		<img src={film.imgSrc} alt=''/>
+			      	</LazyLoad>
 			    </div>
 			    <div className="film-outline">
 			      	<div className="content">

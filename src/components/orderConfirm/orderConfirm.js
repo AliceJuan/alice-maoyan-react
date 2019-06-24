@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { fromJS, is } from 'immutable'
 import './orderConfirm.scss'
 import API from '../../api/api'
 
@@ -21,6 +22,9 @@ class OrderConfirm extends Component {
 	componentDidMount(){
 		this.initData()
 	}
+	shouldComponentUpdate(nextProps, nextState){
+        return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
+    }
 	immediatePay = () => {
         this.props.history.push('/orderConfirm/payment')
     }

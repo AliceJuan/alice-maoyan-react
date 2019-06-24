@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { fromJS, is } from 'immutable'
 
 import Swiper from 'swiper/dist/js/swiper.js'
 import 'swiper/dist/css/swiper.min.css'
@@ -75,6 +76,9 @@ class CinemaDetail extends Component {
             }
         });
         swiper.slideTo(showMovieIndex, 1000, false);
+    }
+    shouldComponentUpdate(nextProps, nextState){
+        return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
     }
     switchThis = (index) => {
     	this.setState(preState => ({

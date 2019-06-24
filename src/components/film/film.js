@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { fromJS, is } from 'immutable'
 import './film.scss'
 import API from '../../api/api'
 
@@ -30,6 +31,9 @@ class Film extends Component {
     }
     componentDidMount(){
         this.getFilmDetails()
+    }
+    shouldComponentUpdate(nextProps, nextState){
+        return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
     }
     expandDesc = () => {
         this.setState((preState) => ({

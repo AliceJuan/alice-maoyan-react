@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { fromJS, is } from 'immutable'
 import './starScore.scss'
 import fullStarImg from '../../assets/star-full-new.png'
 import emptyStarImg from '../../assets/star-empty-new.png'
@@ -47,6 +48,9 @@ class StarScore extends Component {
 			emptyStars: emptyStars,
         	people: peopleTmp
         })
+	}
+	shouldComponentUpdate(nextProps, nextState){
+		return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
 	}
 	render(){
 		let fullStarNode = []

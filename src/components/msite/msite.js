@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import "./msite.scss"
 import API from "../../api/api"
+// import { CSSTransition, TransitionGroup } from "react-transition-group"
+import { fromJS, is } from "immutable"
 
 import store from '../../redux/store'
 
@@ -38,6 +40,9 @@ class Miste extends Component {
 	componentDidMount(){
 		this.initData()
 	}
+	shouldComponentUpdate(nextProps, nextState){
+		return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
+	}
 	toggleHotItem = (hotActive) => {
 		return () => {
 			this.setState({
@@ -56,19 +61,23 @@ class Miste extends Component {
 	      		<HeadTop headTitle={this.state.headTitle} goBack={this.state.goBack}></HeadTop>
 	      		<section className="box-container msite-container">
 	      			<TopBar currentCity={this.state.currentCity} hotShowFlag={this.state.hotShowFlag} toggleHotItem={this.toggleHotItem}></TopBar>
-		            <section className="onshow" style={this.state.hotShowFlag === true ? {} : { display: "none" }}>
-	                    <div className="list">
-	                    	{ filmList }
-	                    </div>
-		            </section>
-		        </section>
-		        <section className="onshow" style={this.state.hotShowFlag === true ? {display: "none"} : {}}>
-	                <div className="list">
-	                    <HorizontalList items={this.state.expect} showType='msite'></HorizontalList>
-	                    <p className="divide-line"></p>
-	                    { filmList }
-	                </div>
-	            </section>
+					{/* <CSSTransition in={this.state.hotShowFlag} timeout={300} classNames="translate"> */}
+		      			<section className="onshow" style={this.state.hotShowFlag === true ? {} : { display: "none" }}>
+		                    <div className="list">
+		                    	{ filmList }
+		                    </div>
+			            </section>
+	                {/* </CSSTransition> */}
+					{/* <CSSTransition in={!this.state.hotShowFlag} timeout={300} classNames="translate"> */}
+			           	<section className="onshow" style={this.state.hotShowFlag === true ? {display: "none"} : {}}>
+			                <div className="list">
+			                    <HorizontalList items={this.state.expect} showType='msite'></HorizontalList>
+			                    <p className="divide-line"></p>
+			                    { filmList }
+			                </div>
+			            </section>
+		            {/* </CSSTransition> */}
+	      		</section>
 	      		<FootGuide></FootGuide>
 	      	</div>
 	    );

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { fromJS, is } from 'immutable'
 import './search.scss'
 import { getStore, setStore } from '../../utils/localStorage'
 import API from '../../api/api'
@@ -25,6 +26,9 @@ class Search extends Component {
 			historySearch: getStore('historySearch') || []
 		})
 	}
+	shouldComponentUpdate(nextProps, nextState){
+        return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
+    }
 	searchFilms = async (keyword) => {
 		if (!keyword) {
 			this.setState({

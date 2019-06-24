@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { fromJS, is } from 'immutable'
 import './cinema.scss'
 import API from '../../api/api'
 
@@ -59,6 +60,9 @@ class Cinema extends Component {
             this.getCinemaData()
         }
     }
+    shouldComponentUpdate(nextProps, nextState){
+        return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
+    }
     goCinemaDetail = (cinemaId) => {
         return () => {
         	let chooseDay = this.state.showDays[this.state.dayIndex].date
@@ -68,24 +72,24 @@ class Cinema extends Component {
         }
     }
     render(){
-        let states = this.state
+        let { headTitle, goBack, movieSearchCinema, showDays, dayIndex, cinemaList } = this.state
         return (
             <div className="cinema">
-                <HeadTop headTitle={states.headTitle} goBack={states.goBack}></HeadTop>
+                <HeadTop headTitle={headTitle} goBack={goBack}></HeadTop>
                 <section className="box-container">
-                    { !states.movieSearchCinema && <SearchBox searchEvent={this.getCinemaData} keyword=''></SearchBox> }
-                    {states.movieSearchCinema && <ul className="show-days">
+                    { !movieSearchCinema && <SearchBox searchEvent={this.getCinemaData} keyword=''></SearchBox> }
+                    {movieSearchCinema && <ul className="show-days">
                         {
-                            states.showDays.map((day,index)=>{
+                            showDays.map((day,index)=>{
                                 return (
-                                    <li key={index} onClick={this.chooseDay(day,index)} className={states.dayIndex===index ? 'active': null }>{ day.date }</li>
+                                    <li key={index} onClick={this.chooseDay(day,index)} className={dayIndex===index ? 'active': null }>{ day.date }</li>
                                 )
                             })
                         }
                     </ul>}
-                    <CinemaList cinemaList={states.cinemaList} goCinemaDetail={this.goCinemaDetail} movieSearchCinema={states.movieSearchCinema}></CinemaList>
+                    <CinemaList cinemaList={cinemaList} goCinemaDetail={this.goCinemaDetail} movieSearchCinema={movieSearchCinema}></CinemaList>
                 </section>
-                { !states.movieSearchCinema && <FootGuide></FootGuide> }
+                { !movieSearchCinema && <FootGuide></FootGuide> }
             </div>
         )
     }

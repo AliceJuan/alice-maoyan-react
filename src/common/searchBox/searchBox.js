@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './searchBox.scss'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { fromJS, is } from 'immutable'
 
 class SearchBox extends Component {
 	constructor(props){
@@ -17,6 +18,9 @@ class SearchBox extends Component {
 			placeNowTab: this.props.place,
 			keyword: this.props.keyword
 		})
+	}
+	shouldComponentUpdate(nextProps, nextState){
+		return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
 	}
     handleInput = (type, e) => {
 	    let value = e.target.value

@@ -8,3 +8,12 @@
   background-color: rgb(226, 226, 226);
   height: vw(10);
 }
+/*子路由动画*/
+.translate-enter{
+    transform: translate3d(100%, 0, 0);
+    &.translate-enter-active{
+        transition: transform .3s;
+        transform: translate3d(0, 0, 0);
+    }
+}
+    

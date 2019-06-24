@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import { fromJS, is } from 'immutable'
 import './city.scss'
 import API from '../../api/api'
 import { getStore } from '../../utils/localStorage'
@@ -29,6 +30,9 @@ class City extends Component {
 	componentWillMount(){
         this.initData()
 	}
+	shouldComponentUpdate(nextProps, nextState){
+        return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
+    }
 	selectCityEvent = (city) => {
         this.props.updateCity(city)
         this.props.history.go(-1)
