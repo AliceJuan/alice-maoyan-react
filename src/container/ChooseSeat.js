@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { saveSeatInfo } from "../redux/action"
+import { saveSeatInfo, addSeat } from "../redux/action"
 import ChooseSeat from '../components/chooseSeat/chooseSeat'
 
 const mapStateToProps = (state) => ({
@@ -11,6 +11,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
 	saveSeatInfo: (seat) => {
 		dispatch(saveSeatInfo(seat));
+	},
+	addSeat: (seat) => {
+		dispatch(addSeat(seat))
 	}
 });
 

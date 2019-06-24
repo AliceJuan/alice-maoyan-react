@@ -12,3 +12,5 @@ export const SAVE_VIDEO_TIME = "SAVE_VIDEO_TIME"
 
 export const SAVE_SEAT = "SAVE_SEAT"
 
+
+export const ADD_SEAT = "ADD_SEAT"

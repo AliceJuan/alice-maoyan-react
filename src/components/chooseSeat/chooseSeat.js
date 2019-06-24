@@ -79,6 +79,8 @@ class ChooseSeat extends Component {
             } else {
                 newArray[row][col] = 1
                 selectSeatInfoTmp.push({place: place, price: '19.9'})
+                // 测试 异步action
+                this.props.addSeat({place: place, price: '19.9'})
             }
         }
         // 必须整体更新二维数组，Vue无法检测到数组某一项更新,必须复制一个数组才行

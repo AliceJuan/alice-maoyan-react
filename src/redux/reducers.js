@@ -73,8 +73,8 @@ function video(video = initialState.video, action){
 
 function seat(seat=initialState.seat, action){
 	switch (action.type) {
-//		case types.ADD_SEAT:
-//			return action.seatInfo;
+		case types.ADD_SEAT:
+			return Object.assign({}, action.seatInfo);
 //		case types.DELETE_SEAT:
 //			return action.seatInfo;
 		case types.SAVE_SEAT:

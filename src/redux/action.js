@@ -1,4 +1,5 @@
 import * as types from "./actionTypes"
+// import api from "../api/api"
 
 export const changePlace = place => ({
   type: types.CHANGE_PLACE,
@@ -30,6 +31,22 @@ export const saveSeatInfo = seat => ({
   seat
 })
 
+export const addSeat = (seatInfo) => (dispatch, getState) => {
+  setTimeout(() => {
+    dispatch({type: types.ADD_SEAT, seatInfo})
+  }, 1000)
+}
+
+// const receiveCinemaInfo = cinemaDetails => ({
+//   type: types.RECEIVE_CINEMA_DETAILS,
+//   cinemaDetails
+// })
+
+// export const getCinemaDetails = () => (dispatch, getState) => {
+//   return fetch(`https://www.reddit.com/r/${subreddit}.json`)
+//   .then(response => response.json())
+//   .then(json => dispatch(receivePosts(subreddit, json)))
+// }
 
 
 /*export const addToCart = productId => (dispatch, getState) => {
