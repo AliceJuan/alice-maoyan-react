@@ -15,7 +15,7 @@ class FilmList extends Component {
 		return (
 			<Link className="film-card" to={{pathname: '/film/'+film.movieId}}>
 			    <div className="film-img">
-			    	<LazyLoad throttle={200} height={125}>
+			    	<LazyLoad throttle={200} height={125} placeholder={<img src="https://gw.alicdn.com/tps/i1/TB147JCLFXXXXc1XVXXxGsw1VXX-112-168.png" alt='' />}>
 			      		<img src={film.imgSrc} alt=''/>
 			      	</LazyLoad>
 			    </div>

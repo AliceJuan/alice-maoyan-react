@@ -17,6 +17,12 @@ export default {
     getAllFilms (params) {
         return fetch('./json/ten-films.json', params)
     },
+    getExpectFilms (params) {
+        return fetch('./json/expect_films.json', params)
+    },
+    getComingFilms (params) {
+        return fetch('./json/coming_films.json', params)
+    },
     searchFilms (keyword) {
         return fetch('./json/all_films.json', keyword)
     },

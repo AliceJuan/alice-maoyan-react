@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import LazyLoad from 'react-lazyload'
+import LazyLoad from 'react-lazyload'
 import './horizontalList.scss'
 import px2Vw from '../../utils/vw'
 
@@ -27,7 +27,10 @@ class HorizontalList extends Component {
 			      			let imgSrc = this.props.showType === 'actor' ? item.actorSrc : item.imgSrc
 			      			return (
 			      				<div key={index} className="horizontal-scroll-item" onClick={this.gotoDetail(item.movieId)}>
-									<img src={imgSrc} alt="" />
+									{/* <img src={imgSrc} alt="" /> */}
+									<LazyLoad throttle={200} height={125}>
+										<img src={imgSrc} alt=''/>
+									</LazyLoad>
 						          	{
 							          	this.props.showType === "msite" ? 
 							          		<div>
